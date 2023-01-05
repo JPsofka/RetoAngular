@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-order-list',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  constructor() { }
+  orders: any;
+  currentOrder!: null;
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.getAllOrders()
+  }
+
+  getAllOrders():void{
+    this.orderService.getAll()
+      .subscribe({next: (values)=> {
+        this.orders = values
+        console.log(this.orders);
+      }})
+  }
+
+  refresh(): void {
+    this.currentOrder = null;
+  }
+
+  setCurrentOrder(orderSelected:any): void {
+    this.currentOrder = orderSelected;
   }
 
 }

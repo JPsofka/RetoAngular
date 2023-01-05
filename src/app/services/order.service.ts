@@ -24,11 +24,4 @@ export class OrderService {
     return this.httpClient.post<Order>(baseURL, data);
   }
 
-  update(id:number, data:Order): Observable<boolean> {
-    return this.httpClient.put<boolean>(`${baseURL}/${id}`, data);
-  }
-
-  delete(id:number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(`${baseURL}/${id}`);
-  }
 }
