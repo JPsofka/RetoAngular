@@ -21,7 +21,6 @@ export class OrderListComponent implements OnInit {
     this.orderService.getAll()
       .subscribe({next: (values)=> {
         this.orders = values
-        console.log(this.orders);
       }})
   }
 

@@ -2,7 +2,7 @@ import { Purchase } from "./Purchase";
 
 export interface Order{
     IdType:string,
-    IdCient:number,
+    IdClient:number,
     ClientName:string,
     Purchases:Purchase[]
 }
