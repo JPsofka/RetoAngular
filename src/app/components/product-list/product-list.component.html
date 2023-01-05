@@ -1,1 +1,64 @@
-<p>product-list works!</p>
+<div class="container" style="margin-top: 70px;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Available</th>
+                <th>Enabled</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+
+                <td>{{ product.productId }}</td>
+                <td> {{ product.name }}</td>
+                <td> {{ product.inInventory }}</td>
+                <td> {{ product.enabled }}</td>
+                <td> {{ product.min }}</td>
+                <td> {{ product.max }}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="setCurrentProduct(product)">🖋️</button>
+                    <button class="btn btn-danger" (click)="delete(product.productId)">🗑️</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="product.productId != 0">
+
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="product.name" name="name" />
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Available</label>
+            <input class="form-control" id="InInventory" required [(ngModel)]="product.inInventory" name="InInventory" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Enabled</label>
+            <input class="form-control" id="Enabled" required [(ngModel)]="product.enabled" name="Enabled" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Min</label>
+            <input class="form-control" id="Min" required [(ngModel)]="product.min" name="Min" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Max</label>
+            <input class="form-control" id="Max" required [(ngModel)]="product.max" name="Max" />
+        </div> -->
+
+        <button (click)="edit(product.productId, product)" class="btn btn-success">Edit</button>
+        <button (click)="refresh()" class="btn btn-danger">Cancelar</button>
+    </div>
+
+</div>
